@@ -1,0 +1,11 @@
+public  class homepage {
+    public List<Patient__c>  patlists{set;get;}
+     public List<Doctor__c>  doclists{set;get;}
+     public List<Appointment__c> applists{set;get;}
+   public homepage()
+   {
+      patlists=[Select id,name,Contact_No__c,(Select Id,  Name, Appointment_Date__c From Appointment__r) From Patient__c];
+      doclists=[select id,name,Contact_No__c,(Select Id,  Name, Appointment_Date__c From Appointment__r) from Doctor__c];
+      applists=[select id,name,Appointment_Date__c, Patient__c,Doctor__c,Doctor__r.Name,Patient__r.Name from Appointment__c];
+}
+}
